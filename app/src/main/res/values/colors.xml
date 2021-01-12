@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#2f3640</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!--MAIN COLOR website https://flatuicolors.com/ -->
+    <color name="dark_green">#0A492F</color>
+ 	 <!--Black and Grey COLOR -->
+ 	<color name="blackpearl">#1e272e</color>
+ 	<color name="goodnight">#485460</color>
+ 	<color name="londonsquare">#808e9b</color>
+ 	<color name="whitegrey">#d2dae2</color>
+
+ 	 <!-- russian pallete COLOR -->
+ 	<color name="tigerlily">#e15f41</color>
+ 	<color name="brewedmustard">#e77f67</color>
+ 	<color name="biscay">#303952</color>
+ 	<color name="summertime">#f5cd79</color>
+
+ 	 <!-- spanish pallete COLOR -->
+ 	<color name="alamedaochre">#cc8e35</color>
+ 	<color name=""></color>
+ 	 <!-- french pallete COLOR -->
+
+ 	<color name="paradisegreen">#b8e994</color>
+ 	<color name="auroragreen">#78e08f</color>
+ 	<color name="waterfall">#38ada9</color>
+ 	<color name="reefencounter">#079992</color>
+
+ 	 <!-- spanish pallete COLOR -->
+ 	<color name="orangehibiscus">#fd9644</color>
+ 	<color name="beniukonbronze">#fa8231</color>
+ 	<color name="nyctaxi">#f7b731</color>
+ 	<color name="bluegray">#778ca3</color>
+ 	<color name="twinkleblue">#d1d8e0</color>
+ 	<color name="bluehorizon">#4b6584</color>
+
+</resources>

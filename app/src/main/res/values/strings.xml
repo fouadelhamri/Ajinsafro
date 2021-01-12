@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AjiNafro</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Bonjour fragment vide</string>
+    <string name="carpool_title">Covoiturage</string>
+    <string name="home_title">Accueil</string>
+    <string name="profil_title"> pseudo </string>
+
+</resources>

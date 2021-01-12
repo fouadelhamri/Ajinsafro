@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "965912707567",
+    "project_id": "ajinsafro-db",
+    "storage_bucket": "ajinsafro-db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:965912707567:android:672ad7624d262fe5e7361a",
+        "android_client_info": {
+          "package_name": "com.example.ajinafro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "965912707567-pue540shf9qgsppfigb9t6mdtdu0bf68.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9jjyd72krBqLRalb91ELWMBoN5vBfEj8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "965912707567-pue540shf9qgsppfigb9t6mdtdu0bf68.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
