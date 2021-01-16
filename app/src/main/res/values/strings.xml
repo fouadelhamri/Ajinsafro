@@ -4,6 +4,14 @@
     <string name="hello_blank_fragment">Bonjour fragment vide</string>
     <string name="carpool_title">Covoiturage</string>
     <string name="home_title">Accueil</string>
-    <string name="profil_title"> pseudo </string>
+    <string name="profil_title"> Pseudo </string>
+    <string name="email_hint_field">Adresse email</string>
+    <string name="forgot_password">Mot de passe oublié</string>
+    <string name="register_now">S\'inscrire ! </string>
+    <string name="SignIn_btn_text">Se connecter</string>
+    <string name="welcome_text">Bonjour</string>
+    <string name="dont_have_account_text">Pas de compte ? Pas de problème ,</string>
+    <string name="signup_text">Inscription</string>
+    <string name="already_have_an_account">Déja inscrit ? </string>
 
 </resources>

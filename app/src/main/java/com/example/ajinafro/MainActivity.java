@@ -3,7 +3,9 @@ package com.example.ajinafro;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -17,10 +19,24 @@ import com.example.ajinafro.profile.ProfileFragment;
 import com.example.ajinafro.search.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        currentUser= FirebaseAuth.getInstance().getCurrentUser();
+        ref=getSharedPreferences("ajinsafro",MODE_PRIVATE);
+        UserUid=ref.getString("userUid"," ");
+        Log.d(TAG,"userID =>{"+UserUid+" }");
+    }
+private static String TAG= "MainActivity : ";
+    SharedPreferences ref;
+    FirebaseUser currentUser;
+    String UserUid;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
