@@ -84,27 +84,37 @@ public class SignUpActivity extends AppCompatActivity {
         String email=emailfield.getText().toString().trim();
         String password=passwordfield.getText().toString().trim();
         String password_confirmation=password_confirmationfield.getText().toString().trim();
-        if(password.equals("") || password_confirmation.equals("") || username.equals("") || email.equals("") || !password.equals(password_confirmation)){
+        if(password.equals("") || password_confirmation.equals("") || username.equals("") || email.equals("") ){
             snackbar= Snackbar.make(main_layout,"tout les champs sont obligatoire",Snackbar.LENGTH_LONG);
             snackbar.show();
             Log.d(TAG,"tout les champs sont obligatoire");
         }else{
-           db.collection("users").whereEqualTo("username",username)
-                   .get()
-                   .addOnCompleteListener(task -> {
-                           if (task.isSuccessful()){
-                               List<DocumentSnapshot> doc = task.getResult().getDocuments();
-                               boolean username_already_exist=false;
-                               if (doc.size()!=0)username_already_exist=true;
-                               if(username_already_exist){
-                                   snackbar= Snackbar.make(main_layout,  "Ce pseudo est déja utilisé \n veuillez choisir un autre",Snackbar.LENGTH_LONG);
-                                   snackbar.show();
-                               }else {
-                                   createNewUser(email,password,username,db);
-                               }
-                           }
-                       }
-           );
+            if(!password.equals(password_confirmation)){
+                snackbar= Snackbar.make(main_layout,"Revérifier votre mot de passe",Snackbar.LENGTH_LONG);
+                snackbar.show();
+            }else{
+                if(password.length()<8){
+                    snackbar= Snackbar.make(main_layout,"Mot de passe très faible ",Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                }else {
+                    db.collection("users").whereEqualTo("username",username)
+                            .get()
+                            .addOnCompleteListener(task -> {
+                                        if (task.isSuccessful()){
+                                            List<DocumentSnapshot> doc = task.getResult().getDocuments();
+                                            boolean username_already_exist=false;
+                                            if (doc.size()!=0)username_already_exist=true;
+                                            if(username_already_exist){
+                                                snackbar= Snackbar.make(main_layout,  "Ce pseudo est déja utilisé \n veuillez choisir un autre",Snackbar.LENGTH_LONG);
+                                                snackbar.show();
+                                            }else {
+                                                createNewUser(email,password,username,db);
+                                            }
+                                        }
+                                    }
+                            );
+                }
+            }
         }
     }
 
@@ -155,7 +165,7 @@ public class SignUpActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d(TAG, "DocumentSnapshot successfully written!");
-                        //ref.edit().putBoolean("isLogged",true).apply();
+                        ref.edit().putBoolean("isLogged",true).apply();
                         ref.edit().putString("userUid",uid).apply();
                         Intent nextpage=new Intent(SignUpActivity.this, MainActivity.class);
                         startActivity(nextpage);
