@@ -1,9 +1,12 @@
 package com.example.ajinafro.models;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class UserAccountDetails implements Serializable {
+    private static final String TAG = "UserAccountDetails";
     private String bio;
     private String city;
     private String email;
@@ -27,6 +30,9 @@ public class UserAccountDetails implements Serializable {
         this.profile_image = profile_image;
         this.saved_posts = saved_posts;
         this.username = username;
+        if(this.getProfile_image()==null){
+            Log.d(TAG, "UserAccountDetails: "+"null image inserted");
+        }
     }
 
     public String getBio() {
@@ -54,6 +60,9 @@ public class UserAccountDetails implements Serializable {
     }
 
     public String getProfile_image() {
+        if(profile_image==null){
+            profile_image="https://firebasestorage.googleapis.com/v0/b/ajinsafro-db.appspot.com/o/profile-default.jpg?alt=media&token=430a5da5-9f46-46a0-b816-08ecc26e49fa";
+        }
         return profile_image;
     }
 

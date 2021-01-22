@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG,"userDetails =>"+userAccountDetails.toString());
                 Gson gson = new Gson();
                 String userJson = gson.toJson(userAccountDetails);
-                ref.edit().putString("userAccountDetails", userJson).commit();
+                ref.edit().putString("userAccountDetails", userJson).apply();
             }
         });
     }

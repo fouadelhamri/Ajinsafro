@@ -152,11 +152,11 @@ public class SignUpActivity extends AppCompatActivity {
         Map<String, Object> userdetails = new HashMap<>();
         userdetails.put("username",username );
         userdetails.put("email",email );
-        userdetails.put("bio","Salut ,j'utilise Ajinsafro ");
-        userdetails.put("fullname",username );
-        userdetails.put("phone","none");
-        userdetails.put("city","none");
-        userdetails.put("profile_image","https://firebasestorage.googleapis.com/v0/b/ajinsafro-db.appspot.com/o/avatar.jpg?alt=media&token=610b96ee-5252-48ee-a36e-5df7a4dccfca");
+        userdetails.put("bio","Bonjour, j'utilise Ajinsafro ");
+        userdetails.put("fullname","" );
+        userdetails.put("phone","");
+        userdetails.put("city","");
+        userdetails.put("profile_image","https://firebasestorage.googleapis.com/v0/b/ajinsafro-db.appspot.com/o/profile-default.jpg?alt=media&token=430a5da5-9f46-46a0-b816-08ecc26e49fa");
         userdetails.put("posts", Arrays.asList());
         userdetails.put("saved_posts",Arrays.asList());
         db.collection("users_details").document(uid)

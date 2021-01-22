@@ -13,5 +13,17 @@
     <string name="dont_have_account_text">Pas de compte ? Pas de problème ,</string>
     <string name="signup_text">Inscription</string>
     <string name="already_have_an_account">Déja inscrit ? </string>
-
+    //edit
+    <string name="user_name">Nom d utilisateur</string>
+    <string name="modifier_profil">Modifier Profil</string>
+    <string name="edit_img">Changer la photo de profil</string>
+    <string name="ancien_mdp">ancien mot de passe</string>
+    <string name="nouveau_mdp">nouveau mot de passe</string>
+    <string name="modifier">Modifier</string>
+    <string name="phone">telephone</string>
+    <string name="city">ville</string>
+    <string name="edit_mdp">" Modifier le mot de passe"</string>
+    <string name="citypicker_title">Choix de ville :</string>
+    <string name="citypicker_edittext_hint" />
+    <string name="citypicker_confirm_btn">Confirmer</string>
 </resources>
