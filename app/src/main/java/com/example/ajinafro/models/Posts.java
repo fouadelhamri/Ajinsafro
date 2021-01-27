@@ -1,19 +1,22 @@
 package com.example.ajinafro.models;
 
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.ServerTimestamp;
 
 import java.util.ArrayList;
 
 public class Posts {
     private Adresse adresse;
     private ArrayList<String> comments;//comments_id
+    @ServerTimestamp
     private Timestamp created_at;
+
     private String description;
     private ArrayList<String> likes;//users_ids
-    private String photo;
+    private ArrayList<String> photo;
     private String publisher;
-
-    public Posts(Adresse adresse, ArrayList<String> comments, Timestamp created_at, String description, ArrayList<String> likes, String photo, String publisher) {
+    private String name;
+    public Posts(String name,Adresse adresse, ArrayList<String> comments, Timestamp created_at, String description, ArrayList<String> likes, ArrayList<String> photo, String publisher) {
         this.adresse = adresse;
         this.comments = comments;
         this.created_at = created_at;
@@ -21,6 +24,15 @@ public class Posts {
         this.likes = likes;
         this.photo = photo;
         this.publisher = publisher;
+        this.name=name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Posts() {
@@ -66,11 +78,11 @@ public class Posts {
         this.likes = likes;
     }
 
-    public String getPhoto() {
+    public ArrayList<String> getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(ArrayList<String> photo) {
         this.photo = photo;
     }
 
@@ -85,12 +97,13 @@ public class Posts {
     @Override
     public String toString() {
         return "Posts{" +
+                "name="+name+
                 "adresse=" + adresse.toString() +
                 ", comments=" + comments +
                 ", created_at=" + created_at +
                 ", description='" + description + '\'' +
                 ", likes=" + likes +
-                ", photo='" + photo + '\'' +
+                ", photo='" + photo.toString() + '\'' +
                 ", publisher='" + publisher + '\'' +
                 '}';
     }

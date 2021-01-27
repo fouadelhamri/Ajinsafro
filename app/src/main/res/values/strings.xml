@@ -13,7 +13,7 @@
     <string name="dont_have_account_text">Pas de compte ? Pas de problème ,</string>
     <string name="signup_text">Inscription</string>
     <string name="already_have_an_account">Déja inscrit ? </string>
-    //edit
+    <!-- Edit Profil -->
     <string name="user_name">Nom d utilisateur</string>
     <string name="modifier_profil">Modifier Profil</string>
     <string name="edit_img">Changer la photo de profil</string>
@@ -26,4 +26,10 @@
     <string name="citypicker_title">Choix de ville :</string>
     <string name="citypicker_edittext_hint" />
     <string name="citypicker_confirm_btn">Confirmer</string>
+    <!-- New Post -->
+    <string name="ajouter_post">Nouvelle publication</string>
+    <string name="addpost_poi_name_hint">Nom D\'endroit</string>
+    <string name="title_activity_maps_picker">Map</string>
+    <string name="addpost_retry_btn" />
+    <string name="addpost_share_btn_text">Partager</string>
 </resources>
