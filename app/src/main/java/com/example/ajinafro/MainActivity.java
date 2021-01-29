@@ -1,7 +1,9 @@
 package com.example.ajinafro;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -29,11 +31,14 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+
 import butterknife.ButterKnife;
 
 
 public class MainActivity extends AppCompatActivity {
-
+private String filter_city=null;
+private ArrayList<String> filter_categories=new ArrayList<>();
     @Override
     protected void onStart() {
         super.onStart();
@@ -61,6 +66,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setupNavigationBottom();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d(TAG, "onActivityResult: returned");
+        if(requestCode==4 && resultCode== Activity.RESULT_OK){
+            filter_city=data.getExtras().getString("selectedCity");
+            filter_categories=data.getExtras().getStringArrayList("selectedCategories");
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(
+                            R.id.fragment_container,
+                            new SearchFragment(filter_city,filter_categories))
+                    .commit();        }
     }
     private BottomNavigationView.OnNavigationItemSelectedListener
             navListener
@@ -131,4 +151,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }

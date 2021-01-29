@@ -417,7 +417,6 @@ public class EditProfile<layout_city> extends AppCompatActivity {
             Log.d(TAG, "uploadProfileImageToCloudStorage: "+"pas d'image d entree");
         }
     }
-
     void getDownloadUrl(StorageReference ref){
         ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override

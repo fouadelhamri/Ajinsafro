@@ -32,4 +32,11 @@
     <string name="title_activity_maps_picker">Map</string>
     <string name="addpost_retry_btn" />
     <string name="addpost_share_btn_text">Partager</string>
+    <!-- Search  -->
+    <string name="searchFragment_title">Recherche</string>
+    <string name="searchFragment_searchbar_hint">Rechercher</string>
+    <string name="filter_picker_title">Choix de filtre : </string>
+    <string name="filter_picker_subtitle1">Catégories : </string>
+    <string name="filter_picker_subtitle2">Ville : </string>
+    <string name="filterpicker_confirmbtn">Valider</string>
 </resources>

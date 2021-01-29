@@ -1,18 +1,19 @@
-package com.example.ajinafro.utils;
+package com.example.ajinafro;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ajinafro.R;
-import com.example.ajinafro.adapters.CitiesAdapter;
-import com.example.ajinafro.models.City;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.EditText;
+
+import com.example.ajinafro.adapters.CategoriesTagsAdapter;
+import com.example.ajinafro.adapters.CitiesFilterAdapter;
+import com.example.ajinafro.models.City;
+import com.example.ajinafro.utils.HorizontalSpacingItemDecorator;
+import com.example.ajinafro.utils.VerticalSpacingItemDecorator;
 
 import java.util.ArrayList;
 
@@ -21,37 +22,93 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 
-public class CityPickerActivity extends AppCompatActivity {
+public class FiltersPickerActivity extends AppCompatActivity {
+private String selectedCity=null;
+private  ArrayList<String> selectedCategories=new ArrayList<>();
+public ArrayList<City> cities=new ArrayList<>();
+public ArrayList<String> cat_name = new ArrayList<>();
 
-    private static final String TAG = "CityPickerActivity";
+    public String getSelectedCity() {
+        return selectedCity;
+    }
 
+    public void setSelectedCity(String selectedCity) {
+        this.selectedCity = selectedCity;
+    }
+    public ArrayList<String> getSelectedCategories() {
+        return selectedCategories;
+    }
+
+    public void setSelectedCategories(ArrayList<String> selectedCategories) {
+        this.selectedCategories = selectedCategories;
+    }
+
+    RecyclerView categories_recycleview, cities_recycleview;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_city_picker);
+        setContentView(R.layout.activity_filters_picker);
         ButterKnife.bind(this);
 
+        categories_recycleview=(RecyclerView) findViewById(R.id.categorie_tags_recycleview);
+        cities_recycleview=(RecyclerView) findViewById(R.id.citypicker_recycleview2);
+        loadCategories();
         loadCities();
-        cityname_Field.setHint(getIntent().getStringExtra("initialCity"));
-        selectedCity=getIntent().getStringExtra("initialCity");
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        citypicker_recycleview.setLayoutManager(linearLayoutManager);
-        VerticalSpacingItemDecorator itemDecorator = new VerticalSpacingItemDecorator(25);
-        citypicker_recycleview.addItemDecoration(itemDecorator);
-        CitiesAdapter cities_adapter=new CitiesAdapter(getApplicationContext(), (ArrayList<City>) cities,this);
-        citypicker_recycleview.setAdapter(cities_adapter);
+        CategoriesTagsAdapter categoriesAdapter=new CategoriesTagsAdapter(getApplicationContext(),cat_name,this);
+        categories_recycleview.setAdapter(categoriesAdapter);
+        HorizontalSpacingItemDecorator itemDecorator = new HorizontalSpacingItemDecorator(10);
+        categories_recycleview.addItemDecoration(itemDecorator);
+        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        categories_recycleview.setLayoutManager(layoutManager);
+        //
+        CitiesFilterAdapter citiesFilterAdapter=new CitiesFilterAdapter(getApplicationContext(),cities,this);
+        cities_recycleview.setAdapter(citiesFilterAdapter);
+        VerticalSpacingItemDecorator itemDecorator2 = new VerticalSpacingItemDecorator(30);
+        cities_recycleview.addItemDecoration(itemDecorator2);
+        RecyclerView.LayoutManager layoutManager2=new LinearLayoutManager(this);
+        cities_recycleview.setLayoutManager(layoutManager2);
     }
-    ArrayList<City> cities;
-    public String selectedCity;
-    public void setSelectedCity(String selectedCity){
-        this.selectedCity=selectedCity;
+
+    private void loadCategories() {
+        cat_name.add("cafe");
+        cat_name.add("hotel");
+        cat_name.add("restaurant");
+        cat_name.add("sushi");
+        cat_name.add("monument historique");
+        cat_name.add("1cafe");
+        cat_name.add("1hotel");
+        cat_name.add("1restaurant");
+        cat_name.add("1sushi");
+        cat_name.add("2sushi");
+        cat_name.add("2monument historique");
+        cat_name.add("2cafe");
+        cat_name.add("2hotel");
+        cat_name.add("8restaurant");
+        cat_name.add("8sushi");
+        cat_name.add("85monument historique");
     }
 
-    @BindView(R.id.citypicker_cityname)
+    @OnClick(R.id.close_filter_btn)
+    void closeFilterActivity(){
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("selectedCity",selectedCity);
+        returnIntent.putExtra("selectedCategories",selectedCategories);
+        setResult(Activity.RESULT_OK,returnIntent);
+        finish();
+    }
+
+    @OnClick(R.id.citypicker_confirme_btn2)
+    void sendresult(){
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("selectedCity",selectedCity);
+        returnIntent.putExtra("selectedCategories",selectedCategories);
+        setResult(Activity.RESULT_OK,returnIntent);
+        finish();
+    }
+    @BindView(R.id.citypicker_cityname2)
     EditText cityname_Field;
 
-    @OnTextChanged(R.id.citypicker_cityname)
+    @OnTextChanged(R.id.citypicker_cityname2)
     void searchRestaurantByName(){
         String city_search_field=cityname_Field.getText().toString().toLowerCase().trim();
         ArrayList<City>cities_match_search = new ArrayList<>();
@@ -60,32 +117,10 @@ public class CityPickerActivity extends AppCompatActivity {
                 cities_match_search.add(cities.get(i));
             }
         }
-        CitiesAdapter restaurantAdapter=new CitiesAdapter(getApplicationContext(),cities_match_search, this);
-        citypicker_recycleview.setAdapter(restaurantAdapter);
+        CitiesFilterAdapter citiesFilterAdapter=new CitiesFilterAdapter(getApplicationContext(),cities_match_search, this);
+        cities_recycleview.setAdapter(citiesFilterAdapter);
     }
-
-    @OnClick(R.id.citypicker_confirme_btn)
-    void sendResult(){
-        if(selectedCity!=null){
-            Intent returnIntent = new Intent();
-            returnIntent.putExtra("selectedCity",selectedCity);
-            setResult(Activity.RESULT_OK,returnIntent);
-            finish();
-        }else{
-            Intent returnIntent = new Intent();
-            setResult(Activity.RESULT_CANCELED,returnIntent);
-            finish();
-        }
-    }
-
-    @BindView(R.id.citypicker_recycleview2)
-    RecyclerView citypicker_recycleview;
-    @OnClick(R.id.back_button)
-    void back_to(){
-    onBackPressed();
-}
     void loadCities(){
-        cities=new ArrayList<City>();
         cities.add(new City(1, "Aïn Harrouda", 6));
         cities.add(new City(2, "Ben Yakhlef", 6));
         cities.add(new City(3, "Bouskoura", 6));
@@ -481,7 +516,6 @@ public class CityPickerActivity extends AppCompatActivity {
         cities.add(new City(402, "Oued-Eddahab", 12));
         cities.add(new City(403, "Stehat", 1));
         cities.add(new City(404, "Aït Attab", 5));
-        Log.d(TAG,"Loadind Cities END");
 
     }
 }

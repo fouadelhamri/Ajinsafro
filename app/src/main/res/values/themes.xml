@@ -7,4 +7,17 @@
         <item name="colorAccent">@color/black</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="Theme.AjiNafro.Transparent" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">#954D5FC3</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="colorPrimary">@color/grey_font</item>
+        <item name="colorPrimaryDark">@color/grey_font</item>
+        <item name="colorAccent">@color/black</item>
+    </style>
 </resources>
