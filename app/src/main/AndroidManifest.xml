@@ -19,11 +19,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AjiNafro">
-        <activity android:name=".FiltersPickerActivity" android:theme="@style/Theme.AjiNafro.Transparent"></activity>
+        <activity android:name=".carpool.NewCarpoolOtherDetailsActivity"></activity>
+        <activity android:name=".carpool.NewCarpoolCitiesPickerActivity" />
+        <activity android:name=".carpool.SearchCarpoolActivity" />
+        <activity
+            android:name=".FiltersPickerActivity"
+            android:theme="@style/Theme.AjiNafro.Transparent" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity
             android:name=".newPost.MapsPickerActivity"
             android:label="@string/title_activity_maps_picker" />
@@ -35,6 +41,7 @@
         <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

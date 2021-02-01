@@ -2,7 +2,7 @@
     <string name="app_name">AjiNafro</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Bonjour fragment vide</string>
-    <string name="carpool_title">Covoiturage</string>
+    <string name="carpool_title">Espace de covoiturage</string>
     <string name="home_title">Accueil</string>
     <string name="profil_title"> Pseudo </string>
     <string name="email_hint_field">Adresse email</string>
@@ -39,4 +39,22 @@
     <string name="filter_picker_subtitle1">Catégories : </string>
     <string name="filter_picker_subtitle2">Ville : </string>
     <string name="filterpicker_confirmbtn">Valider</string>
+    <string name="carpool_mycarpools_btn">mes offres</string>
+    <string name="carpool_title_description">Salut, tu voyages quelque part?</string>
+    <string name="carpool_title_description2">avec un groupe c\'est mieux</string>
+    <string name="carpool_addnew_btn">ajouter un covoiturage</string>
+    <string name="searchcarpool_startcity_hint">Ville de départ</string>
+    <string name="searchcarpool_endcity_hint">Ville de destination</string>
+    <string name="carpool_addalert_btn">Créer une alerte</string>
+    <string name="carpool_subtitle1">Vous avez pas trouver un resultat ?</string>
+    <string name="searchcarpool_subtitle2">Pas d\'inquiétude! Vous pouvez créer une alerte avec tes critères</string>
+    <string name="newcarpool_nextbtn">Suivant</string>
+    <string name="newcarpool_datefield">ex: 12/12/2020 </string>
+    <string name="newcarpool_backbtn" >Annuler</string>
+    <string name="newcarpool_description_hint">Vous avez d\'autres critères à suggérer ? Tapez les ici ...</string>
+    <string name="newcarpool_chooseplace_nombre_text">Nombre des places disponibles</string>
+    <string name="newcarpool_placelimite">Afin de limiter tout risque de contamination pour nos membres, nous te conseillons de ne pas dépasser 3 places et d\'inviter tes futures passagers à respecter les gestes barrières.</string>
+    <string name="newcarpool_chooseprice_text" >Prix par passager</string>
+    <string name="price">Taper le prix en Dh ici...</string>
+    <string name="back_text">Retour</string>
 </resources>

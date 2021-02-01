@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".carpool.NewCarpoolCitiesPickerActivity">
+
+    <TextView
+        android:id="@+id/newcarpool_backbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/newcarpool_backbtn"
+        android:textColor="@color/blackpearl"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/newcarpool_datepicker"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/shape_edittext_search_graybg"
+        android:drawableStart="@drawable/datepicker_25px"
+        android:drawablePadding="10dp"
+        android:drawableTintMode="screen"
+        android:editable="false"
+        android:ellipsize="none"
+        android:ems="10"
+        android:fontFamily="sans-serif-thin"
+        android:hint="@string/newcarpool_datefield"
+        android:inputType="textPersonName"
+        android:textColor="@color/reefencounter"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/searchcarpool_startcity2"
+        app:layout_constraintStart_toStartOf="@+id/searchcarpool_startcity2"
+        app:layout_constraintTop_toBottomOf="@+id/newcarpool_endcity2" />
+
+    <EditText
+        android:id="@+id/searchcarpool_startcity2"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/shape_edittext_search_graybg"
+        android:drawableStart="@drawable/start_location_35"
+        android:drawablePadding="10dp"
+        android:drawableTintMode="screen"
+        android:ellipsize="none"
+        android:ems="10"
+        android:fontFamily="sans-serif-thin"
+        android:hint="@string/searchcarpool_startcity_hint"
+        android:inputType="textPersonName"
+        android:textColor="@color/reefencounter"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/newcarpool_endcity2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/newcarpool_endcity2"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/shape_edittext_search_graybg"
+        android:drawableStart="@drawable/next_location_24px"
+        android:drawablePadding="10dp"
+        android:drawableTintMode="screen"
+        android:ellipsize="none"
+        android:ems="10"
+        android:fontFamily="sans-serif-thin"
+        android:hint="@string/searchcarpool_endcity_hint"
+        android:inputType="textPersonName"
+        android:textColor="@color/reefencounter"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/searchcarpool_startcity2"
+        app:layout_constraintStart_toStartOf="@+id/searchcarpool_startcity2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/newcarpool_donebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/shape_addcarpool_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/newcarpool_addbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/newcarpool_nextbtn"
+            android:textColor="@color/waterfall"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@drawable/next_route"
+            app:layout_constraintBottom_toBottomOf="@+id/newcarpool_addbtn"
+            app:layout_constraintStart_toEndOf="@+id/newcarpool_addbtn"
+            app:layout_constraintTop_toTopOf="@+id/newcarpool_addbtn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TimePicker
+        android:id="@+id/newcarpool_timepicker"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/shape_addcarpool_btn"
+        android:backgroundTint="@color/teal_700"
+        android:ems="10"
+        android:foregroundGravity="center"
+        android:headerBackground="@color/teal_700"
+        android:inputType="time"
+        android:numbersBackgroundColor="@color/alamedaochre"
+        android:padding="10dp"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newcarpool_datepicker"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,11 +21,11 @@
  	<color name="brewedmustard">#e77f67</color>
  	<color name="biscay">#303952</color>
  	<color name="summertime">#f5cd79</color>
-
+<color name="red_location">#E72E2E</color>
  	 <!-- spanish pallete COLOR -->
  	<color name="alamedaochre">#cc8e35</color>
  	 <!-- french pallete COLOR -->
-
+<color name="gray_carpool_bg">#DAE4E8EC</color>
  	<color name="paradisegreen">#b8e994</color>
  	<color name="auroragreen">#78e08f</color>
  	<color name="waterfall">#38ada9</color>

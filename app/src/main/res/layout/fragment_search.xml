@@ -44,7 +44,7 @@
             tools:layout_editor_absoluteX="148dp">
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/searchcarpool_startcity"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="10dp"

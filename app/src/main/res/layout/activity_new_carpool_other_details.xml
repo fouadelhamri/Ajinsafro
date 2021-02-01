@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".carpool.NewCarpoolOtherDetailsActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/newcarpool_donebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/shape_addcarpool_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/newcarpool_addbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="8dp"
+            android:text="Yalah !"
+            android:textColor="@color/waterfall"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/newcarpool_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/shape_edittext_search_graybg"
+        android:drawablePadding="10dp"
+        android:drawableTintMode="screen"
+        android:ellipsize="start"
+        android:ems="10"
+        android:fontFamily="sans-serif-thin"
+        android:gravity="center_horizontal|fill_horizontal"
+        android:hint="@string/newcarpool_description_hint"
+        android:inputType="textMultiLine|textPersonName|textImeMultiLine"
+        android:minHeight="100dp"
+        android:paddingTop="15dp"
+        android:singleLine="false"
+        android:textAlignment="viewStart"
+        android:textColor="@color/reefencounter"
+        android:textDirection="locale"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/newcarpool_donebtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/newcarpool_places_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/newcarpool_backbtn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-thin"
+            android:text="@string/back_text"
+            android:textColor="@color/blackpearl"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="sans-serif-light"
+            android:shadowDx="6"
+            android:shadowDy="6"
+            android:text="@string/newcarpool_placelimite"
+            android:textAlignment="center"
+            android:textColor="@color/grey_font"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/searchcarpool_subtitle1"
+            app:layout_constraintStart_toStartOf="@+id/searchcarpool_subtitle1" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:inputType="textPersonName|numberDecimal"
+            android:padding="3dp"
+            android:shadowColor="@color/alamedaochre"
+            android:shadowDx="@dimen/neomorph_view_elevation"
+            android:shadowDy="@android:dimen/thumbnail_height"
+            android:text="@string/newcarpool_chooseplace_nombre_text"
+            android:textAlignment="center"
+            android:textColor="@color/teal_700"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/newcarpool_decreaseplacebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="@+id/newcarpool_place_number"
+            app:layout_constraintEnd_toStartOf="@+id/newcarpool_place_number"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
+            app:layout_constraintTop_toTopOf="@+id/newcarpool_place_number"
+            app:srcCompat="@drawable/minus_35px" />
+
+        <ImageButton
+            android:id="@+id/newcarpool_addplacebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="@+id/newcarpool_place_number"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
+            app:layout_constraintStart_toEndOf="@+id/newcarpool_place_number"
+            app:layout_constraintTop_toTopOf="@+id/newcarpool_place_number"
+            app:srcCompat="@drawable/add_35px" />
+
+        <EditText
+            android:id="@+id/newcarpool_place_number"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:hint="1"
+            android:inputType="numberDecimal"
+            android:maxWidth="20dp"
+            android:shadowColor="@color/alamedaochre"
+            android:shadowDx="@dimen/neomorph_view_elevation"
+            android:shadowDy="@android:dimen/thumbnail_height"
+            android:text="1"
+            android:textColor="@color/teal_700"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toTopOf="@+id/textView6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newcarpool_place_number"
+            app:srcCompat="@drawable/voyage" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/newcarpool_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/editTextTextPersonName4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_addcarpool_btn"
+            android:ems="10"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:hint="@string/price"
+            android:inputType="numberDecimal"
+            android:maxWidth="20dp"
+            android:padding="20dp"
+            android:shadowColor="@color/alamedaochre"
+            android:shadowDx="@dimen/neomorph_view_elevation"
+            android:shadowDy="@android:dimen/thumbnail_height"
+            android:textColor="@color/teal_700"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:inputType="textPersonName|numberDecimal"
+            android:padding="3dp"
+            android:shadowColor="@color/alamedaochre"
+            android:shadowDx="@dimen/neomorph_view_elevation"
+            android:shadowDy="@android:dimen/thumbnail_height"
+            android:text="@string/newcarpool_chooseprice_text"
+            android:textAlignment="center"
+            android:textColor="@color/teal_700"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

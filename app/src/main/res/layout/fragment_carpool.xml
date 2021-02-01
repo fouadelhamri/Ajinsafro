@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#DAE4E8EC"
     android:isScrollContainer="true"
     tools:context=".carpool.CarpoolFragment">
 
@@ -11,8 +12,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/carpool_upperbar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@color/dark_green"
+        android:layout_height="60dp"
+        android:background="@color/summertime"
         android:maxHeight="80dp"
         android:minHeight="80dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,11 +27,123 @@
             android:layout_marginStart="15dp"
             android:fontFamily="sans-serif-medium"
             android:text="@string/carpool_title"
-            android:textColor="@color/white"
+            android:textColor="@color/reefencounter"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/carpool_myoffers_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_addcarpool_btn"
+            android:fontFamily="sans-serif-medium"
+            android:paddingLeft="10dp"
+            android:paddingTop="4dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="4dp"
+            android:text="@string/carpool_mycarpools_btn"
+            android:textAlignment="center"
+            android:textColor="@color/waterfall"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/carpool_goto_search_carpool"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/carpool_goto_search_carpool"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:background="@android:color/transparent"
+            android:backgroundTintMode="screen"
+            android:src="@drawable/google_yellow_search_30px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/carpool_title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/carpool_title_description"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carpool_upperbar" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif-light"
+        android:shadowDx="6"
+        android:shadowDy="6"
+        android:text="@string/carpool_title_description2"
+        android:textColor="@color/reefencounter"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carpool_title2" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/newcarpool_donebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/shape_addcarpool_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <TextView
+            android:id="@+id/newcarpool_addbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/carpool_addnew_btn"
+            android:textColor="@color/reefencounter"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/add_new_24px"
+            app:layout_constraintBottom_toBottomOf="@+id/newcarpool_addbtn"
+            app:layout_constraintEnd_toStartOf="@+id/newcarpool_addbtn"
+            app:layout_constraintTop_toTopOf="@+id/newcarpool_addbtn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/illustration_voyageurs"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newcarpool_donebtn">
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
