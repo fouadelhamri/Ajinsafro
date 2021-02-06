@@ -1,6 +1,7 @@
 package com.example.ajinafro.profile;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,13 +16,22 @@ import android.widget.EditText;
 
 import com.example.ajinafro.R;
 import com.example.ajinafro.models.City;
+import com.example.ajinafro.models.Posts;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,6 +43,9 @@ public class ProfileFragment extends Fragment {
 
     private static final String TAG ="PROFILE Fragment : " ;
     private FirebaseFirestore db;
+    private SharedPreferences ref;
+    private String UserUid;
+    private QuerySnapshot result;
 
     public ProfileFragment() {
     }
@@ -47,6 +60,8 @@ public class ProfileFragment extends Fragment {
     public void onStart() {
         super.onStart();
         db=FirebaseFirestore.getInstance();
+        ref=getActivity().getSharedPreferences("ajinsafro",MODE_PRIVATE);
+        UserUid=ref.getString("userUid"," ");
     }
 
     @Override

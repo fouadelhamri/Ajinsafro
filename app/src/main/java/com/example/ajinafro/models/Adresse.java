@@ -1,6 +1,8 @@
 package com.example.ajinafro.models;
 
-public class Adresse {
+import java.io.Serializable;
+
+public class Adresse implements Serializable {
     private String ville;
     private Double longitude;
     private Double latitude;

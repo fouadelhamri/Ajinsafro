@@ -3,9 +3,10 @@ package com.example.ajinafro.models;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.ServerTimestamp;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Posts {
+public class Posts implements Serializable {
     private Adresse adresse;
     private ArrayList<String> comments;//comments_id
     @ServerTimestamp

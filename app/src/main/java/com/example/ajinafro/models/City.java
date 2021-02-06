@@ -1,6 +1,8 @@
 package com.example.ajinafro.models;
 
-public class City {
+import java.io.Serializable;
+
+public class City implements Serializable {
     int id;
     String name;
     int region;

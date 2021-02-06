@@ -31,6 +31,7 @@ import com.bumptech.glide.Glide;
 import com.chinodev.androidneomorphframelayout.NeomorphFrameLayout;
 import com.example.ajinafro.R;
 import com.example.ajinafro.models.City;
+import com.example.ajinafro.models.Posts;
 import com.example.ajinafro.models.UserAccountDetails;
 import com.example.ajinafro.utils.CityPickerActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -46,6 +47,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -111,6 +114,11 @@ public class EditProfile<layout_city> extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
         ButterKnife.bind(this);
+        /*ArrayList<Posts> mypost =new ArrayList<>();
+        //ArrayList<String> mypostjson=new ArrayList<>();
+        ArrayList<String> mypostjson=(ArrayList<String>) getIntent().getSerializableExtra("myPosts");
+        Log.d(TAG, "onCreate: itemReceived >"+mypostjson.size());*/
+
         db= FirebaseFirestore.getInstance();
         storageUsersImagesReference= FirebaseStorage.getInstance().getReference().child("users_images");
         getUserDetailsFromSharedPreferences();
@@ -130,6 +138,7 @@ public class EditProfile<layout_city> extends AppCompatActivity {
         String userjson = ref.getString("userAccountDetails","empty");
         Gson gson=new Gson();
         userAccountDetails=gson.fromJson(userjson,UserAccountDetails.class);
+        Log.d(TAG, "getUserDetailsFromSharedPreferences: size "+userAccountDetails.getPosts().size());
         Log.d(TAG, "getUserDetailsFromSharedPreferences: "+        userAccountDetails.toString());
     }
     private void showImagePickDialog() {

@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.ajinafro.R;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.Timestamp;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,6 +23,11 @@ public class NewCarpoolOtherDetailsActivity extends AppCompatActivity {
     private Integer nb_places;
     private Double price;
     private String description;
+    private Integer hours;
+    private Integer minutes;
+    private Timestamp date;
+    private String start;
+    private String end;
     ConstraintLayout done_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,16 +39,16 @@ public class NewCarpoolOtherDetailsActivity extends AppCompatActivity {
 
 
     @BindView(R.id.newcarpool_place_number)
-    EditText places_nb_field;
+    TextView places_nb_field;
 
     @OnClick(R.id.newcarpool_addplacebtn)
     void increase_places(){
-    Integer nb_place= Integer.parseInt(places_nb_field.getText().toString());
-    if(nb_place==4){
-        places_nb_field.setText(String.valueOf(0));
-    }else {
-        places_nb_field.setText(String.valueOf(nb_place+1));
-    }
+        Integer nb_place= Integer.parseInt(places_nb_field.getText().toString());
+        if(nb_place==4){
+            places_nb_field.setText(String.valueOf(0));
+        }else {
+            places_nb_field.setText(String.valueOf(nb_place+1));
+        }
     }
 
     @OnClick(R.id.newcarpool_decreaseplacebtn)

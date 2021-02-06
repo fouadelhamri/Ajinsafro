@@ -51,7 +51,6 @@
         android:minHeight="100dp"
         android:paddingTop="15dp"
         android:singleLine="false"
-        android:textAlignment="viewStart"
         android:textColor="@color/reefencounter"
         android:textDirection="locale"
         android:textSize="16sp"
@@ -101,7 +100,7 @@
             app:layout_constraintEnd_toEndOf="@+id/searchcarpool_subtitle1"
             app:layout_constraintStart_toStartOf="@+id/searchcarpool_subtitle1" />
 
-        <EditText
+        <TextView
             android:id="@+id/editTextTextPersonName2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -110,11 +109,7 @@
             android:ems="10"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
-            android:inputType="textPersonName|numberDecimal"
             android:padding="3dp"
-            android:shadowColor="@color/alamedaochre"
-            android:shadowDx="@dimen/neomorph_view_elevation"
-            android:shadowDy="@android:dimen/thumbnail_height"
             android:text="@string/newcarpool_chooseplace_nombre_text"
             android:textAlignment="center"
             android:textColor="@color/teal_700"
@@ -145,21 +140,15 @@
             app:layout_constraintTop_toTopOf="@+id/newcarpool_place_number"
             app:srcCompat="@drawable/add_35px" />
 
-        <EditText
+        <TextView
             android:id="@+id/newcarpool_place_number"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@android:color/transparent"
-            android:ems="10"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
-            android:hint="1"
-            android:inputType="numberDecimal"
             android:maxWidth="20dp"
-            android:shadowColor="@color/alamedaochre"
-            android:shadowDx="@dimen/neomorph_view_elevation"
-            android:shadowDy="@android:dimen/thumbnail_height"
             android:text="1"
             android:textColor="@color/teal_700"
             android:textSize="25sp"
@@ -202,19 +191,15 @@
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
             android:hint="@string/price"
-            android:inputType="numberDecimal"
             android:maxWidth="20dp"
-            android:padding="20dp"
-            android:shadowColor="@color/alamedaochre"
-            android:shadowDx="@dimen/neomorph_view_elevation"
-            android:shadowDy="@android:dimen/thumbnail_height"
+            android:padding="15dp"
             android:textColor="@color/teal_700"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
 
-        <EditText
+        <TextView
             android:id="@+id/editTextTextPersonName3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -224,9 +209,6 @@
             android:gravity="center"
             android:inputType="textPersonName|numberDecimal"
             android:padding="3dp"
-            android:shadowColor="@color/alamedaochre"
-            android:shadowDx="@dimen/neomorph_view_elevation"
-            android:shadowDy="@android:dimen/thumbnail_height"
             android:text="@string/newcarpool_chooseprice_text"
             android:textAlignment="center"
             android:textColor="@color/teal_700"

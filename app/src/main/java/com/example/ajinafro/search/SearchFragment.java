@@ -22,8 +22,8 @@ public class SearchFragment extends Fragment {
     public SearchFragment() {
     }
     private static final String TAG ="SearchFragment" ;
-public String selectedCity;
-public ArrayList<String> selectedCategories;
+    public String selectedCity;
+    public ArrayList<String> selectedCategories;
     public SearchFragment(String selectedCity, ArrayList<String> selectedCategories) {
         this.selectedCity=selectedCity;
         this.selectedCategories=selectedCategories;
@@ -38,7 +38,6 @@ public ArrayList<String> selectedCategories;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Log.d(TAG, "onCreate: fragment selected city "+this.selectedCity);
         if(selectedCategories!=null){
             Log.d(TAG, "onCreate: fragment selected categories "+this.selectedCategories.toString());
