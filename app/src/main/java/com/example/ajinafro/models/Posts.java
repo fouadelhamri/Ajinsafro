@@ -17,15 +17,26 @@ public class Posts implements Serializable {
     private ArrayList<String> photo;
     private String publisher;
     private String name;
-    public Posts(String name,Adresse adresse, ArrayList<String> comments, Timestamp created_at, String description, ArrayList<String> likes, ArrayList<String> photo, String publisher) {
+    private String category;
+
+    public Posts(String name,String category,Adresse adresse, ArrayList<String> comments, Timestamp created_at, String description, ArrayList<String> likes, ArrayList<String> photo, String publisher) {
         this.adresse = adresse;
         this.comments = comments;
+        this.category=category;
         this.created_at = created_at;
         this.description = description;
         this.likes = likes;
         this.photo = photo;
         this.publisher = publisher;
         this.name=name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getName() {

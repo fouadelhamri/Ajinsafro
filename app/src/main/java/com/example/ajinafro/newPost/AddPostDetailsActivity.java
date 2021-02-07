@@ -46,6 +46,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -74,7 +75,7 @@ public class AddPostDetailsActivity extends AppCompatActivity {
     private static final String TAG = "AddPostDetailsActivity";
     //firebase
     private FirebaseFirestore db;
-    private SharedPreferences ref;
+    private SharedPreferences ref;    private UserAccountDetails userAccountDetails;
     private StorageReference storagePostsImagesReference;
     private StorageTask uploadtask;
     //permission constants
@@ -110,6 +111,8 @@ public class AddPostDetailsActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         ref=getSharedPreferences("ajinsafro",MODE_PRIVATE);
         user_UID=ref.getString("userUid","none");
+        getUserDetailsFromSharedPreferences();
+
         //init database firestore
         db=FirebaseFirestore.getInstance();
         storagePostsImagesReference= FirebaseStorage.getInstance().getReference().child("posts");
@@ -216,7 +219,7 @@ public class AddPostDetailsActivity extends AppCompatActivity {
                     //derniere photo a étè uploader!
                     String post_desc=description_post.getText().toString();
                     String post_name=nom_post.getText().toString();
-                    Posts post_toShare=new Posts(post_name,post_adresse,null,new Timestamp(new Date()),post_desc,null,post_photos_string,user_UID);
+                    Posts post_toShare=new Posts(post_name,categorie_name,post_adresse,null,new Timestamp(new Date()),post_desc,null,post_photos_string,user_UID);
                     Log.d(TAG, "added post: "+post_toShare.toString());
                     addPostToDb(post_toShare);
                 }
@@ -228,6 +231,7 @@ public class AddPostDetailsActivity extends AppCompatActivity {
         @Override
         public void onSuccess(DocumentReference documentReference) {
             snackbar.setText("terminé");
+            updateUserPost(documentReference.getId());
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -458,5 +462,18 @@ public class AddPostDetailsActivity extends AppCompatActivity {
         }
         startActivityForResult(locationPicker,4);
     }
+    private  void getUserDetailsFromSharedPreferences(){
+        ref=getSharedPreferences("ajinsafro",MODE_PRIVATE);
+        String userjson = ref.getString("userAccountDetails","empty");
+        Gson gson=new Gson();
+        userAccountDetails=gson.fromJson(userjson,UserAccountDetails.class);
+    }
 
+    void updateUserPost(String postId){
+        db.collection("users_details").document(user_UID).update("posts",FieldValue.arrayUnion(postId));
+        Gson gson = new Gson();
+        String userJson = gson.toJson(userAccountDetails);
+        ref.edit().remove("userAccountDetails");
+        ref.edit().putString("userAccountDetails", userJson).apply();
+    }
 }

@@ -20,6 +20,33 @@ public class Carpool implements Serializable {
     
     private String more_details;
 
+    @Override
+    public String toString() {
+        return "Carpool{" +
+                "start_city='" + start_city + '\'' +
+                ", end_city='" + end_city + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", start_date=" + start_date +
+                ", start_hours=" + start_hours +
+                ", start_minutes=" + start_minutes +
+                ", available_places=" + available_places +
+                ", price=" + price +
+                ", more_details='" + more_details + '\'' +
+                '}';
+    }
+
+    public Carpool(String start_city, String end_city, String publisher, Timestamp start_date, Integer start_hours, Integer start_minutes, Integer available_places, Integer price, String more_details) {
+        this.start_city = start_city;
+        this.end_city = end_city;
+        this.publisher = publisher;
+        this.start_date = start_date;
+        this.start_hours = start_hours;
+        this.start_minutes = start_minutes;
+        this.available_places = available_places;
+        this.price = price;
+        this.more_details = more_details;
+    }
+
     public Carpool() {
     }
 

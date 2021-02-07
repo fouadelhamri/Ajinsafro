@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.example.ajinafro.R;
 
@@ -40,6 +41,16 @@ public class CarpoolFragment extends Fragment {
             public void onClick(View v) {
                 Intent newcarpool=new Intent(getActivity().getApplicationContext(),NewCarpoolCitiesPickerActivity.class);
                 getActivity().startActivity(newcarpool);
+
+
+            }
+        });
+        ImageButton search_btn = (ImageButton) view.findViewById(R.id.carpool_goto_search_carpool);
+        search_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent searchcarpool=new Intent(getActivity().getApplicationContext(),SearchCarpoolActivity.class);
+                getActivity().startActivity(searchcarpool);
             }
         });
         return view;

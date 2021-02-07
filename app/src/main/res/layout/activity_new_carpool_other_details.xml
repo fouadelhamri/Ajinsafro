@@ -21,7 +21,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginBottom="8dp"
             android:text="Yalah !"
             android:textColor="@color/waterfall"
@@ -100,7 +99,7 @@
             app:layout_constraintEnd_toEndOf="@+id/searchcarpool_subtitle1"
             app:layout_constraintStart_toStartOf="@+id/searchcarpool_subtitle1" />
 
-        <TextView
+        <EditText
             android:id="@+id/editTextTextPersonName2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -140,15 +139,19 @@
             app:layout_constraintTop_toTopOf="@+id/newcarpool_place_number"
             app:srcCompat="@drawable/add_35px" />
 
-        <TextView
+        <EditText
             android:id="@+id/newcarpool_place_number"
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@android:color/transparent"
+            android:ems="10"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
+            android:hint="1"
+            android:inputType="numberDecimal"
             android:maxWidth="20dp"
+
             android:text="1"
             android:textColor="@color/teal_700"
             android:textSize="25sp"
@@ -191,15 +194,17 @@
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
             android:hint="@string/price"
+            android:inputType="numberDecimal"
             android:maxWidth="20dp"
-            android:padding="15dp"
+            android:padding="20dp"
+
             android:textColor="@color/teal_700"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
 
-        <TextView
+        <EditText
             android:id="@+id/editTextTextPersonName3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -207,8 +212,8 @@
             android:ems="10"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
-            android:inputType="textPersonName|numberDecimal"
             android:padding="3dp"
+
             android:text="@string/newcarpool_chooseprice_text"
             android:textAlignment="center"
             android:textColor="@color/teal_700"

@@ -109,7 +109,7 @@
             android:id="@+id/newcarpool_addbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="70dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="50dp"
             android:layout_marginBottom="8dp"
@@ -122,16 +122,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/add_new_24px"
-            app:layout_constraintBottom_toBottomOf="@+id/newcarpool_addbtn"
-            app:layout_constraintEnd_toStartOf="@+id/newcarpool_addbtn"
-            app:layout_constraintTop_toTopOf="@+id/newcarpool_addbtn" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

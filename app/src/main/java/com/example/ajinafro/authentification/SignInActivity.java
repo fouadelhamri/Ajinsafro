@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import com.example.ajinafro.MainActivity;
 import com.example.ajinafro.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -53,6 +55,34 @@ public class SignInActivity extends AppCompatActivity {
 
     @BindView(R.id.signin_email)
     EditText emailField;
+
+    @BindView(R.id.bottom_layout)
+    LinearLayout bottomLayout;
+
+    @OnClick(R.id.signin_forget_password)
+    void sendpasswordToMail(){
+        String userMail=emailField.getText().toString();
+        if(userMail.isEmpty()){
+            Snackbar snackbar=Snackbar.make(bottomLayout,"Pour réinitialiser votre mot de passe, entrez une adresse mail valide !", Snackbar.LENGTH_LONG);
+            snackbar.show();
+        }else{
+            FirebaseAuth.getInstance().sendPasswordResetEmail(userMail)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Snackbar snackbar=Snackbar.make(bottomLayout,"Une mail de réinitialisation de mot de pas à étè envoyée...", Snackbar.LENGTH_LONG);
+                                snackbar.show();
+                            }else{
+                                Snackbar snackbar=Snackbar.make(bottomLayout,"Cette adresse mail ne correspond à aucun utilisateur...", Snackbar.LENGTH_LONG);
+                                snackbar.show();
+                            }
+                        }
+                    });
+        }
+
+
+    }
 
     @BindView(R.id.signin_password)
     EditText passwordField;

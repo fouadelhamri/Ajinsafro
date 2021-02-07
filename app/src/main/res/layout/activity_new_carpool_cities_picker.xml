@@ -53,6 +53,7 @@
         android:drawablePadding="10dp"
         android:drawableTintMode="screen"
         android:ellipsize="none"
+        android:focusable="false"
         android:ems="10"
         android:fontFamily="sans-serif-thin"
         android:hint="@string/searchcarpool_startcity_hint"
@@ -67,6 +68,7 @@
 
     <EditText
         android:id="@+id/newcarpool_endcity2"
+        android:focusable="false"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:background="@drawable/shape_edittext_search_graybg"
@@ -140,9 +142,12 @@
         android:numbersBackgroundColor="@color/alamedaochre"
         android:padding="10dp"
         android:textSize="22sp"
+        android:timePickerMode="spinner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newcarpool_datepicker"
         app:layout_constraintVertical_bias="0.0" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
