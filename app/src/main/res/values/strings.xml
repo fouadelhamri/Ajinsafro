@@ -64,4 +64,5 @@
     <string name="Place">...</string>
     <string name="price">...</string>
     <string name="search_carpool_btn">Rechercher</string>
+    <string name="details">Plus d \'information</string>
 </resources>

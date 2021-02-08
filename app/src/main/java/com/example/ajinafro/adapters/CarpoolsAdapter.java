@@ -1,6 +1,8 @@
 package com.example.ajinafro.adapters;
 
 import android.content.Context;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +13,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ajinafro.R;
+import com.example.ajinafro.carpool.SearchCarpoolActivity;
 import com.example.ajinafro.models.Carpool;
+import com.example.ajinafro.models.UserAccountDetails;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,11 +30,15 @@ public class CarpoolsAdapter extends RecyclerView.Adapter<CarpoolsAdapter.ViewHo
     Context mcontext;
     LayoutInflater inflater;
     static String TAG="CarpoolsAdapter";
+    private SearchCarpoolActivity searchCarpoolActivity;
+    private FirebaseFirestore db;
 
-    public CarpoolsAdapter(Context context,ArrayList<Carpool> carpoolArrayList) {
+    public CarpoolsAdapter(Context context, ArrayList<Carpool> carpoolArrayList,SearchCarpoolActivity searchCarpoolActivity) {
         mcontext=context;
         this.carpoolArrayList=carpoolArrayList;
         inflater=LayoutInflater.from(context);
+        this.searchCarpoolActivity=searchCarpoolActivity;
+        db=FirebaseFirestore.getInstance();
     }
 
     @NonNull
@@ -60,6 +72,31 @@ public class CarpoolsAdapter extends RecyclerView.Adapter<CarpoolsAdapter.ViewHo
         holder.places.setText(" "+item.getAvailable_places());
         holder.startC.setText(item.getStart_city());
         holder.endC.setText(item.getEnd_city());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    try{
+                        searchCarpoolActivity.hide_bottomsheet();
+                       db.collection("users_details").document(item.getPublisher()).get()
+                               .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                   @Override
+                                   public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                       if(task.isSuccessful()){
+                                           if(task.getResult().exists()){
+                                               UserAccountDetails userdetails=task.getResult().toObject(UserAccountDetails.class);
+                                               Log.d(TAG, "onClick: "+userdetails.toString());
+                                               String moredetails=item.getMore_details();
+                                               if(moredetails.isEmpty())moredetails="Pas de d'autre critère...";
+                                               searchCarpoolActivity.change_bottomsheet_state(moredetails,"@"+userdetails.getUsername(), Uri.parse(userdetails.getProfile_image()),userdetails.getPhone() );
+                                           }
+                                       }
+                                   }
+                               });
+                    }catch (Exception ex){
+                        Log.d(TAG, "onClick: exception "+ex.getMessage());
+                    }
+            }
+        });
     }
 
     @Override

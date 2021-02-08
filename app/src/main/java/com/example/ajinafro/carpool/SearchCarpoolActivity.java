@@ -1,26 +1,35 @@
 package com.example.ajinafro.carpool;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.ajinafro.R;
 import com.example.ajinafro.adapters.CarpoolsAdapter;
 import com.example.ajinafro.models.Carpool;
 import com.example.ajinafro.utils.CityPickerActivity;
 import com.example.ajinafro.utils.VerticalSpacingItemDecorator;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -34,6 +43,7 @@ import java.util.Date;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SearchCarpoolActivity extends AppCompatActivity {
     private static final int CITY_PICKER =888 ;
@@ -42,6 +52,9 @@ public class SearchCarpoolActivity extends AppCompatActivity {
     private ArrayList<Carpool> carpoolArrayList=new ArrayList<>();
     private static final String TAG = "SearchCarpoolActivity";
     private static final Date now= new Date();
+    private BottomSheetBehavior<ConstraintLayout> bottomSheetBehavior;
+    SearchCarpoolActivity self;
+    private String lastUserPhone_selected=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,9 +62,14 @@ public class SearchCarpoolActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         db=FirebaseFirestore.getInstance();
         result_search.setVisibility(View.INVISIBLE);
+        bottomSheetBehavior=BottomSheetBehavior.from(bottomSheet);
+        hide_bottomsheet();
         initRecycleview();
-    }
+        self = this;
 
+    }
+@BindView(R.id.bottomSheet)
+ConstraintLayout bottomSheet;
     @BindView(R.id.carpool_offers_recycleview)
     RecyclerView carpools_recycleview;
 
@@ -63,13 +81,52 @@ public class SearchCarpoolActivity extends AppCompatActivity {
     @BindView(R.id.searchcarpool_result_layout)
     ConstraintLayout result_search;
 
+    @OnClick(R.id.call_btn)
+    void call(){
+        call_someone(lastUserPhone_selected);
+    }
+
     @BindView(R.id.searchcarpool_startcity)
     EditText startcity_field;
 
     @BindView(R.id.recherche_btn)
     Button recherche;
+
+    @BindView(R.id.description)
+    TextView descripton_area;
+    @BindView(R.id.carpool_detail_username)
+    TextView username_area;
+    @BindView(R.id.carpool_detail_avatar_picture)
+    CircleImageView circleImageView;
+
+    public void hide_bottomsheet(){
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+    }
+    public void show_bottomsheet(){
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+    }
+    public void change_bottomsheet_state(String description, String username, Uri pdp,String phone){
+        descripton_area.setText(""+description);
+        username_area.setText(username);
+        Glide.with(this).load(pdp).into(circleImageView);
+        lastUserPhone_selected=phone;
+        show_bottomsheet();
+    }
+
+void call_someone(String number){
+        if(number!=null && !number.isEmpty()){
+            Intent calling = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + number));
+            startActivity(calling);
+        }else{
+            Snackbar snackbar=Snackbar.make(bottomSheet,"Cet utilisateur n'a pas encore enregistré un numero de telephone",Snackbar.LENGTH_SHORT);
+                snackbar.show();
+        }
+
+}
+
     @OnClick(R.id.recherche_btn)
     void result(){
+        hide_bottomsheet();
         result_carpool_search();
         //result_search.setVisibility(View.VISIBLE);
     }
@@ -151,7 +208,7 @@ public class SearchCarpoolActivity extends AppCompatActivity {
                                     Log.d(TAG, "onSuccess: Result "+carpoolArrayList.size());
                                 }
                             }
-                            CarpoolsAdapter carpoolsAdapter=new CarpoolsAdapter(getApplicationContext(),carpoolArrayList);
+                            CarpoolsAdapter carpoolsAdapter=new CarpoolsAdapter(getApplicationContext(),carpoolArrayList,self);
                             carpools_recycleview.setAdapter(carpoolsAdapter);
                             VerticalSpacingItemDecorator itemDecorator = new VerticalSpacingItemDecorator(20);
                             carpools_recycleview.addItemDecoration(itemDecorator);
@@ -160,7 +217,7 @@ public class SearchCarpoolActivity extends AppCompatActivity {
 
                         }else{
                             carpoolArrayList=new ArrayList<>();
-                            CarpoolsAdapter carpoolsAdapter=new CarpoolsAdapter(getApplicationContext(),carpoolArrayList);
+                            CarpoolsAdapter carpoolsAdapter=new CarpoolsAdapter(getApplicationContext(),carpoolArrayList,self);
                             carpools_recycleview.setAdapter(carpoolsAdapter);
                             VerticalSpacingItemDecorator itemDecorator = new VerticalSpacingItemDecorator(20);
                             carpools_recycleview.addItemDecoration(itemDecorator);
@@ -192,7 +249,7 @@ public class SearchCarpoolActivity extends AppCompatActivity {
                                     Log.d(TAG, "onSuccess: Result "+carpoolArrayList.size());
                                 }
                             }
-                            CarpoolsAdapter carpoolsAdapter=new CarpoolsAdapter(getApplicationContext(),carpoolArrayList);
+                            CarpoolsAdapter carpoolsAdapter=new CarpoolsAdapter(getApplicationContext(),carpoolArrayList,self);
                             carpools_recycleview.setAdapter(carpoolsAdapter);
                             VerticalSpacingItemDecorator itemDecorator = new VerticalSpacingItemDecorator(20);
                             carpools_recycleview.addItemDecoration(itemDecorator);
@@ -202,7 +259,7 @@ public class SearchCarpoolActivity extends AppCompatActivity {
                         }else{
                             result_search.setVisibility(View.VISIBLE);
                             carpoolArrayList=new ArrayList<>();
-                            CarpoolsAdapter carpoolsAdapter=new CarpoolsAdapter(getApplicationContext(),carpoolArrayList);
+                            CarpoolsAdapter carpoolsAdapter=new CarpoolsAdapter(getApplicationContext(),carpoolArrayList,self);
                             carpools_recycleview.setAdapter(carpoolsAdapter);
                             VerticalSpacingItemDecorator itemDecorator = new VerticalSpacingItemDecorator(20);
                             carpools_recycleview.addItemDecoration(itemDecorator);
@@ -234,7 +291,7 @@ public class SearchCarpoolActivity extends AppCompatActivity {
                                     Log.d(TAG, "onSuccess: Result "+carpoolArrayList.size());
                                 }
                             }
-                            CarpoolsAdapter carpoolsAdapter=new CarpoolsAdapter(getApplicationContext(),carpoolArrayList);
+                            CarpoolsAdapter carpoolsAdapter=new CarpoolsAdapter(getApplicationContext(),carpoolArrayList,self);
                             carpools_recycleview.setAdapter(carpoolsAdapter);
                             VerticalSpacingItemDecorator itemDecorator = new VerticalSpacingItemDecorator(20);
                             carpools_recycleview.addItemDecoration(itemDecorator);
@@ -244,7 +301,7 @@ public class SearchCarpoolActivity extends AppCompatActivity {
                         }else{
                             result_search.setVisibility(View.VISIBLE);
                             carpoolArrayList=new ArrayList<>();
-                            CarpoolsAdapter carpoolsAdapter=new CarpoolsAdapter(getApplicationContext(),carpoolArrayList);
+                            CarpoolsAdapter carpoolsAdapter=new CarpoolsAdapter(getApplicationContext(),carpoolArrayList,self);
                             carpools_recycleview.setAdapter(carpoolsAdapter);
                             VerticalSpacingItemDecorator itemDecorator = new VerticalSpacingItemDecorator(20);
                             carpools_recycleview.addItemDecoration(itemDecorator);
@@ -269,7 +326,7 @@ public class SearchCarpoolActivity extends AppCompatActivity {
                                     Log.d(TAG, "onSuccess: Result "+carpoolArrayList.size());
                                 }
                             }
-                            CarpoolsAdapter carpoolsAdapter=new CarpoolsAdapter(getApplicationContext(),carpoolArrayList);
+                            CarpoolsAdapter carpoolsAdapter=new CarpoolsAdapter(getApplicationContext(),carpoolArrayList,self);
                             carpools_recycleview.setAdapter(carpoolsAdapter);
                             VerticalSpacingItemDecorator itemDecorator = new VerticalSpacingItemDecorator(20);
                             carpools_recycleview.addItemDecoration(itemDecorator);
