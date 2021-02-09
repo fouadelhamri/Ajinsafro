@@ -138,8 +138,6 @@ public class EditProfile<layout_city> extends AppCompatActivity {
         String userjson = ref.getString("userAccountDetails","empty");
         Gson gson=new Gson();
         userAccountDetails=gson.fromJson(userjson,UserAccountDetails.class);
-        Log.d(TAG, "getUserDetailsFromSharedPreferences: size "+userAccountDetails.getPosts().size());
-        Log.d(TAG, "getUserDetailsFromSharedPreferences: "+        userAccountDetails.toString());
     }
     private void showImagePickDialog() {
         //option to display in dialog
@@ -298,6 +296,7 @@ public class EditProfile<layout_city> extends AppCompatActivity {
         edit_profile_txt=findViewById(R.id.edit_profile_txt);
         edit_mdp=findViewById(R.id.edit_mdp);
         //Field hint
+        Log.d(TAG, "uiBinding: useraccount"+userAccountDetails);
         Edit_UserName.getText().append(userAccountDetails.getFullname());
         Edit_Bio.getText().append(userAccountDetails.getBio());
         Edit_phone.getText().append(userAccountDetails.getPhone());

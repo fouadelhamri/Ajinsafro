@@ -21,6 +21,12 @@ public class UserAccountDetails implements Serializable {
     }
 
     public UserAccountDetails(String bio, String city, String email, String fullname, String phone, ArrayList<String> posts, String profile_image, ArrayList<String> saved_posts, String username) {
+        if (phone==null) phone="";
+        if (posts==null)posts=new ArrayList<String>();
+        profile_image="https://firebasestorage.googleapis.com/v0/b/ajinsafro-db.appspot.com/o/profile-default.jpg?alt=media&token=430a5da5-9f46-46a0-b816-08ecc26e49fa";
+        if(saved_posts==null)saved_posts=new ArrayList<String>();
+        if(bio==null)bio="";
+        if(city==null)city="";
         this.bio = bio;
         this.city = city;
         this.email = email;
@@ -36,26 +42,32 @@ public class UserAccountDetails implements Serializable {
     }
 
     public String getBio() {
+        if(this.bio==null) return "";
         return bio;
     }
 
     public String getCity() {
+        if(this.city==null)return "";
         return city;
     }
 
     public String getEmail() {
+        if(this.email==null)return "";
         return email;
     }
 
     public String getFullname() {
+        if(this.fullname==null)return "";
         return fullname;
     }
 
     public String getPhone() {
+        if(this.phone==null)return "";
         return phone;
     }
 
     public ArrayList<String> getPosts() {
+        if (this.posts==null) return new ArrayList<String>();
         return posts;
     }
 
@@ -67,6 +79,7 @@ public class UserAccountDetails implements Serializable {
     }
 
     public ArrayList<String> getSaved_posts() {
+        if (this.saved_posts==null) return new ArrayList<String>();
         return saved_posts;
     }
 
