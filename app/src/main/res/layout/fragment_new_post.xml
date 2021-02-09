@@ -12,8 +12,8 @@
         android:id="@+id/add_upperbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/orangehibiscus"
-        android:maxHeight="80dp"
+        android:background="@color/summertime"
+        android:maxHeight="50dp"
         android:minHeight="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,8 +25,9 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-black"
             android:text="@string/ajouter_post"
-            android:textColor="@color/white"
+            android:textColor="@color/reefencounter"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,11 +36,11 @@
         <ImageButton
             android:id="@+id/back_btn"
             android:layout_width="40dp"
-            android:layout_height="80dp"
+            android:layout_height="50dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="60dp"
             android:layout_marginBottom="8dp"
-            android:background="@color/orangehibiscus"
+            android:background="@color/summertime"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/add_title"
             app:layout_constraintHorizontal_bias="0.15"
@@ -47,7 +48,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/back_btn"
             tools:ignore="MissingConstraints" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
