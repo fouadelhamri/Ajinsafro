@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".profile.ProfileFragment">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/profile_upperbar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/dark_green"
-        android:maxHeight="80dp"
-        android:minHeight="80dp"
+        android:background="@color/summertime"
+        android:maxHeight="50dp"
+        android:minHeight="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,11 +21,12 @@
             android:id="@+id/profile_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:fontFamily="sans-serif-medium"
             android:text="@string/profil_title"
-            android:textColor="@color/white"
+            android:textColor="@color/reefencounter"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
